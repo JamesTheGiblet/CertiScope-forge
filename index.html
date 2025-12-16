@@ -1,1251 +1,519 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adaptive Intelligence Platform - AI-Powered Development Ecosystem</title>
-    <meta name="description" content="Transform your development workflow with intelligent automation, security, and collaboration tools powered by advanced AI agents and skills.">
-    <meta name="keywords" content="AI development tools, automation, security scanning, compliance, test generation, code analysis">
+
+<html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>CertiScope | Web Intelligence & Verification</title> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script> <style> /* ========================================================================== THEME: ANALYTIC INDIGO (Truth & Data) ========================================================================== / :root { --primary: #4338ca; / Indigo - Deep Intelligence / --primary-light: #6366f1; --primary-dark: #312e81; --accent: #0d9488; / Teal - Verification/Truth / --risk: #e11d48; / Red - Misinformation / --warning: #d97706; / Amber - Bias/Unverified */ --neutral: #64748b;
+
+        --bg-body: #f1f5f9;
+        --bg-card: #ffffff;
+        --text-main: #0f172a;
+        --text-muted: #64748b;
+        
+        --radius: 8px;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
     
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://jamestheGiblet.github.io/adaptive-intelligence/">
-    <meta property="og:title" content="Adaptive Intelligence Platform">
-    <meta property="og:description" content="The Complete AI-Powered Development Ecosystem">
-    <meta property="og:image" content="https://jamestheGiblet.github.io/adaptive-intelligence/assets/og-image.png">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://jamestheGiblet.github.io/adaptive-intelligence/">
-    <meta property="twitter:title" content="Adaptive Intelligence Platform">
-    <meta property="twitter:description" content="The Complete AI-Powered Development Ecosystem">
-    <meta property="twitter:image" content="https://jamestheGiblet.github.io/adaptive-intelligence/assets/og-image.png">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    body { background-color: var(--bg-body); color: var(--text-main); line-height: 1.5; padding-bottom: 60px; }
     
-    <style>
-        :root {
-            --primary-color: #667eea;
-            --secondary-color: #764ba2;
-            --accent-color: #f093fb;
-            --text-dark: #2d3748;
-            --text-light: #4a5568;
-            --text-muted: #718096;
-            --bg-light: #f7fafc;
-            --bg-white: #ffffff;
-            --border-color: #e2e8f0;
-            --success-color: #48bb78;
-            --warning-color: #ed8936;
-            --error-color: #f56565;
-            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background-color: var(--bg-white);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow-md);
-        }
-
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .logo {
-            font-size: 1.8em;
-            font-weight: bold;
-            text-decoration: none;
-            color: white;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 100px 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>') repeat;
-            opacity: 0.3;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-            font-weight: 700;
-            background: linear-gradient(45deg, #fff, #f0f8ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero .tagline {
-            font-size: 1.5em;
-            margin-bottom: 30px;
-            opacity: 0.9;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero .description {
-            font-size: 1.2em;
-            margin-bottom: 40px;
-            opacity: 0.8;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            cursor: pointer;
-            font-size: 1.1em;
-        }
-
-        .btn-primary {
-            background: white;
-            color: var(--primary-color);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: var(--primary-color);
-        }
-
-        /* Stats Section */
-        .stats {
-            padding: 60px 0;
-            background: var(--bg-light);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            text-align: center;
-        }
-
-        .stat-item h3 {
-            font-size: 3em;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .stat-item p {
-            color: var(--text-muted);
-            font-size: 1.1em;
-        }
-
-        /* Problem Section */
-        .problem {
-            padding: 80px 0;
-            background: var(--bg-white);
-        }
-
-        .problem-box {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 40px;
-            border-radius: 15px;
-            margin: 40px 0;
-            border: 1px solid var(--border-color);
-        }
-        .problem-title {
-            font-size: 1.3em;
-            margin-bottom: 25px;
-            color: var(--text-dark);
-        }
-        .problem-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-        .problem-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-        }
-        .problem-icon {
-            font-size: 1.5em;
-        }
-        .problem-muted {
-            color: var(--text-muted);
-        }
-        .problem-highlight {
-            font-size: 1.4em;
-            margin-top: 30px;
-            padding: 20px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            border-radius: 10px;
-            text-align: center;
-            font-weight: 600;
-        }
-
-        /* Architecture Section */
-        .architecture {
-            padding: 80px 0;
-            background: var(--bg-white);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: var(--text-dark);
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.3em;
-            color: var(--text-muted);
-            margin-bottom: 60px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .architecture-layers {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .layer {
-            background: var(--bg-white);
-            border-radius: 15px;
-            padding: 40px;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .layer:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .layer-icon {
-            font-size: 3em;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .layer h3 {
-            font-size: 1.8em;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-
-        .layer .layer-subtitle {
-            font-size: 1.1em;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        .layer ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .layer ul li {
-            padding: 8px 0;
-            color: var(--text-light);
-            position: relative;
-            padding-left: 25px;
-        }
-
-        .layer ul li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--success-color);
-            font-weight: bold;
-        }
-
-        /* Tools Section */
-        .tools {
-            padding: 80px 0;
-            background: var(--bg-light);
-        }
-
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        .tool-card {
-            background: var(--bg-white);
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tool-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-        }
-
-        .tool-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .tool-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .tool-icon {
-            font-size: 2.5em;
-            margin-right: 15px;
-        }
-
-        .tool-card h3 {
-            font-size: 1.5em;
-            color: var(--text-dark);
-            margin-bottom: 5px;
-        }
-
-        .tool-category {
-            font-size: 0.9em;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-
-        .tool-description {
-            color: var(--text-light);
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .tool-features {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 25px;
-        }
-
-        .tool-features li {
-            padding: 5px 0;
-            color: var(--text-muted);
-            font-size: 0.95em;
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .tool-features li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: var(--primary-color);
-            font-weight: bold;
-        }
-
-        .tool-link {
-            display: inline-flex;
-            align-items: center;
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .tool-link:hover {
-            color: var(--secondary-color);
-        }
-
-        .tool-link::after {
-            content: '→';
-            margin-left: 8px;
-            transition: transform 0.3s ease;
-        }
-
-        .tool-link:hover::after {
-            transform: translateX(3px);
-        }
-
-        /* Quick Start Section */
-        .quick-start {
-            padding: 80px 0;
-            background: var(--bg-white);
-        }
-
-        .quick-start-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .quick-start-option {
-            background: var(--bg-white);
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: var(--shadow-md);
-            border: 2px solid;
-        }
-
-        .quick-start-option.individual {
-            border-color: var(--success-color);
-        }
-
-        .quick-start-option.gateway {
-            border-color: var(--primary-color);
-        }
-
-        .quick-start-option.platform {
-            border-color: var(--secondary-color);
-        }
-
-        .code-block {
-            background: #1a202c;
-            color: #e2e8f0;
-            padding: 30px;
-            border-radius: 10px;
-            margin: 15px 0;
-            overflow-x: auto;
-            position: relative;
-            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-        }
-
-        .code-block::before {
-            content: attr(data-language);
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            background: var(--primary-color);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.8em;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        .code-block pre {
-            margin: 0;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-
-        /* Workflows Section */
-        .workflows {
-            padding: 80px 0;
-            background: var(--bg-light);
-        }
-
-        .workflow-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        .workflow-card {
-            background: var(--bg-white);
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
-        }
-
-        .workflow-steps {
-            list-style: none;
-            padding: 0;
-            margin-top: 20px;
-        }
-
-        .workflow-steps li {
-            padding: 15px 0;
-            border-bottom: 1px solid var(--border-color);
-            position: relative;
-            padding-left: 40px;
-        }
-
-        .workflow-steps li:last-child {
-            border-bottom: none;
-        }
-
-        .workflow-steps li::before {
-            content: counter(step-counter);
-            counter-increment: step-counter;
-            position: absolute;
-            left: 0;
-            top: 15px;
-            background: var(--primary-color);
-            color: white;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8em;
-            font-weight: bold;
-        }
-
-        .workflow-steps {
-            counter-reset: step-counter;
-        }
-
-        /* Use Cases Section */
-        .use-cases {
-            padding: 80px 0;
-            background: var(--bg-white);
-        }
-
-        .use-case-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        .use-case {
-            padding: 30px;
-            border-radius: 15px;
-            border: 2px solid var(--border-color);
-            transition: all 0.3s ease;
-        }
-
-        .use-case:nth-child(4n+1) {
-            background: linear-gradient(135deg, #667eea22, #764ba222);
-            border-color: var(--primary-color);
-        }
-
-        .use-case:nth-child(4n+2) {
-            background: linear-gradient(135deg, #48bb7822, #38a16922);
-            border-color: var(--success-color);
-        }
-
-        .use-case:nth-child(4n+3) {
-            background: linear-gradient(135deg, #ed893622, #dd672222);
-            border-color: var(--warning-color);
-        }
-
-        .use-case:nth-child(4n+4) {
-            background: linear-gradient(135deg, #f0939822, #e879a422);
-            border-color: var(--accent-color);
-        }
-
-        .use-case h3 {
-            margin-bottom: 15px;
-            color: var(--text-dark);
-        }
-
-        /* Built By Section */
-        .built-by {
-            padding: 80px 0;
-            background: var(--bg-light);
-        }
-
-        .built-by-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .built-by-card {
-            background: var(--bg-white);
-            border-radius: 15px;
-            padding: 40px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
-        }
-
-        .built-by-icon {
-            font-size: 4em;
-            margin-bottom: 20px;
-        }
-
-        .built-by-quote {
-            font-style: italic;
-            font-size: 1.3em;
-            color: var(--text-light);
-            border-left: 4px solid var(--primary-color);
-            padding-left: 20px;
-            margin: 30px 0;
-            text-align: left;
-        }
-
-        /* Community Section */
-        .community {
-            padding: 80px 0;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            text-align: center;
-        }
-
-        .community-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .community-item {
-            padding: 30px;
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .community-item h3 {
-            margin-bottom: 15px;
-            font-size: 1.3em;
-        }
-
-        .community-item a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--text-dark);
-            color: white;
-            padding: 60px 0 30px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 20px;
-            color: white;
-        }
-
-        .footer-section ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-section ul li {
-            padding: 5px 0;
-        }
-
-        .footer-section ul li a {
-            color: #cbd5e0;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-section ul li a:hover {
-            color: white;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid #4a5568;
-            color: #cbd5e0;
-        }
-
-        .github-link {
-            color: white;
-            text-decoration: none;
-        }
-        .github-link:hover {
-            text-decoration: underline;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5em;
-            }
-
-            .hero .tagline {
-                font-size: 1.3em;
-            }
-
-            .nav-links {
-                gap: 15px;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 300px;
-                text-align: center;
-            }
-
-            .container {
-                padding: 0 15px;
-            }
-
-            .tools-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .architecture-layers {
-                grid-template-columns: 1fr;
-            }
-
-            .workflow-cards {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in-up {
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-light);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary-color);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--secondary-color);
-        }
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <nav class="nav">
-                <a href="#" class="logo">🤖 Adaptive Intelligence</a>
-                <ul class="nav-links">
-                    <li><a href="#architecture">Architecture</a></li>
-                    <li><a href="#tools">Tools</a></li>
-                    <li><a href="#quick-start">Quick Start</a></li>
-                    <li><a href="#workflows">Workflows</a></li>
-                    <li><a href="https://github.com/JamesTheGiblet/adaptive-intelligence" target="_blank" rel="noopener">GitHub</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content fade-in-up">
-                <h1>The Adaptive Intelligence Platform</h1>
-                <p class="tagline">Enterprise AI Automation Without the Cloud Tax</p>
-                <p class="description">
-                    Transform your development workflow with intelligent automation, security, and collaboration tools powered by advanced AI agents and skills.
-                </p>
-                <div class="cta-buttons">
-                    <a href="#quick-start" class="btn btn-primary">Get Started</a>
-                    <a href="https://github.com/JamesTheGiblet/adaptive-intelligence" class="btn btn-secondary" target="_blank" rel="noopener">View on GitHub</a>
-                </div>
+    .container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+
+    /* HEADER */
+    .header {
+        background: var(--bg-card);
+        border-bottom: 1px solid #e2e8f0;
+        padding: 20px 0;
+        margin-bottom: 30px;
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .brand {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--primary);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .badge {
+        background: #e0e7ff;
+        color: var(--primary);
+        font-size: 0.75rem;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    /* LAYOUT */
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: 350px 1fr;
+        gap: 25px;
+    }
+
+    @media (max-width: 1024px) { .dashboard-grid { grid-template-columns: 1fr; } }
+
+    /* PANELS */
+    .panel {
+        background: var(--bg-card);
+        border-radius: var(--radius);
+        padding: 25px;
+        box-shadow: var(--shadow);
+        margin-bottom: 25px;
+        border: 1px solid #e2e8f0;
+    }
+
+    .panel-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--primary-dark);
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-bottom: 2px solid #f1f5f9;
+        padding-bottom: 10px;
+    }
+
+    /* INPUTS */
+    .input-group { margin-bottom: 20px; }
+    .input-label { display: block; font-size: 0.9rem; font-weight: 600; color: var(--text-main); margin-bottom: 8px; }
+    
+    input[type="text"], select {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #e2e8f0;
+        border-radius: 6px;
+        font-size: 0.95rem;
+        transition: 0.2s;
+    }
+    
+    input[type="text"]:focus, select:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(67, 56, 202, 0.1);
+    }
+
+    /* VERIFICATION STEPS (TOGGLES) */
+    .step-list { display: flex; flex-direction: column; gap: 10px; }
+    
+    .step-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .step-item:hover { background: #f1f5f9; }
+    
+    .step-item.active {
+        background: #f0fdfa; /* Teal Tint */
+        border-color: var(--accent);
+    }
+
+    .step-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: #e2e8f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-muted);
+        margin-right: 12px;
+    }
+
+    .step-item.active .step-icon {
+        background: var(--accent);
+        color: white;
+    }
+
+    .step-info h4 { font-size: 0.9rem; margin-bottom: 2px; }
+    .step-info p { font-size: 0.75rem; color: var(--text-muted); }
+
+    /* SCORE CARD */
+    .score-circle {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 8px solid #e2e8f0;
+        margin: 0 auto 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .score-val { font-size: 2.5rem; font-weight: 800; color: var(--text-main); line-height: 1; }
+    .score-label { font-size: 0.7rem; text-transform: uppercase; color: var(--text-muted); margin-top: 5px; font-weight: 600; }
+
+    .score-verdict {
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: 700;
+        padding: 10px;
+        border-radius: 6px;
+        background: #f1f5f9;
+    }
+
+    /* METRICS */
+    .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-top: 25px;
+    }
+
+    .metric-box {
+        text-align: center;
+        padding: 15px;
+        background: #f8fafc;
+        border-radius: 6px;
+        border: 1px solid #e2e8f0;
+    }
+
+    .metric-val { font-size: 1.2rem; font-weight: 700; color: var(--primary-dark); }
+    .metric-lbl { font-size: 0.75rem; color: var(--text-muted); }
+
+    /* ANALYSIS FLAGS */
+    .flag-list { margin-top: 20px; }
+    .flag-item {
+        display: flex;
+        gap: 10px;
+        padding: 10px;
+        border-left: 3px solid #ccc;
+        background: #fff;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+    }
+    .flag-item.danger { border-left-color: var(--risk); background: #fef2f2; }
+    .flag-item.warn { border-left-color: var(--warning); background: #fffbeb; }
+    .flag-item.safe { border-left-color: var(--accent); background: #f0fdfa; }
+
+</style>
+
+</head> <body>
+
+<header class="header">
+    <div class="container">
+        <div class="brand">
+            <i class="fas fa-bullseye" style="font-size: 1.8rem;"></i>
+            <div>
+                <div>CertiScope</div>
+                <div style="font-size: 0.8rem; font-weight: 400; color: var(--text-muted);">Intelligent Verification Engine</div>
             </div>
+            <span class="badge">v1.2 Beta</span>
         </div>
-    </section>
+    </div>
+</header>
 
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item fade-in-up">
-                    <h3>8</h3>
-                    <p>Intelligence Tools</p>
-                </div>
-                <div class="stat-item fade-in-up">
-                    <h3>3</h3>
-                    <p>Architecture Layers</p>
-                </div>
-                <div class="stat-item fade-in-up">
-                    <h3>70%</h3>
-                    <p>Cost Reduction</p>
-                </div>
-                <div class="stat-item fade-in-up">
-                    <h3>100%</h3>
-                    <p>Open Source</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Problem Section -->
-    <section class="problem">
-        <div class="container">
-            <h2 class="section-title">The Problem We Solve</h2>
-            <p class="section-subtitle">
-                Every development team wastes time and money on these common issues
-            </p>
-            
-            <div class="problem-box">
-                <p class="problem-title"><strong>Every development team wastes time and money on:</strong></p>
-                <div class="problem-list">
-                    <div class="problem-item">
-                        <span class="problem-icon">💸</span>
-                        <div>
-                            <strong>Expensive AI API bills</strong><br>
-                            <span class="problem-muted">$5K-$50K/month for enterprise teams</span>
-                        </div>
-                    </div>
-                    <div class="problem-item">
-                        <span class="problem-icon">🔑</span>
-                        <div>
-                            <strong>Secret leaks to GitHub</strong><br>
-                            <span class="problem-muted">Happens weekly, costs millions</span>
-                        </div>
-                    </div>
-                    <div class="problem-item">
-                        <span class="problem-icon">📝</span>
-                        <div>
-                            <strong>Security docs nobody writes</strong><br>
-                            <span class="problem-muted">Until after the breach</span>
-                        </div>
-                    </div>
-                    <div class="problem-item">
-                        <span class="problem-icon">🧪</span>
-                        <div>
-                            <strong>Manual test writing</strong><br>
-                            <span class="problem-muted">Boring, skipped, causes bugs</span>
-                        </div>
-                    </div>
-                    <div class="problem-item">
-                        <span class="problem-icon">❓</span>
-                        <div>
-                            <strong>Unreliable web sources</strong><br>
-                            <span class="problem-muted">Can't trust what you find online</span>
-                        </div>
-                    </div>
-                    <div class="problem-item">
-                        <span class="problem-icon">🔄</span>
-                        <div>
-                            <strong>Repetitive manual workflows</strong><br>
-                            <span class="problem-muted">Same tasks, every project</span>
-                        </div>
-                    </div>
-                </div>
-                <p class="problem-highlight">
-                    <strong>We automate all of it. On-premise. Open source. 70% cost reduction.</strong>
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Architecture Section -->
-    <section id="architecture" class="architecture">
-        <div class="container">
-            <h2 class="section-title">3-Layer Architecture</h2>
-            <p class="section-subtitle">
-                A modular, scalable platform designed for enterprise deployment with intelligent agent orchestration
-            </p>
-            
-            <div class="architecture-layers">
-                <div class="layer fade-in-up">
-                    <span class="layer-icon">🤖</span>
-                    <h3>Layer 1: AAS</h3>
-                    <p class="layer-subtitle">Agent Autonomy System</p>
-                    <p>Multi-agent orchestration for complex workflows</p>
-                    <ul>
-                        <li>Agent Fleet Management</li>
-                        <li>Workflow Orchestration</li>
-                        <li>Task Distribution</li>
-                        <li>Secure Communication</li>
-                    </ul>
-                </div>
+<div class="container">
+    <div class="dashboard-grid">
+        
+        <div class="sidebar">
+            <div class="panel">
+                <div class="panel-title"><i class="fas fa-search"></i> Source Analysis</div>
                 
-                <div class="layer fade-in-up">
-                    <span class="layer-icon">🚀</span>
-                    <h3>Layer 2: Praximous</h3>
-                    <p class="layer-subtitle">AI Gateway</p>
-                    <p>Smart routing with 100+ built-in skills</p>
-                    <ul>
-                        <li>Intelligent Routing</li>
-                        <li>Smart Skills Library</li>
-                        <li>Universal Authentication</li>
-                        <li>Performance Monitoring</li>
-                    </ul>
+                <div class="input-group">
+                    <label class="input-label">Source URL / Domain</label>
+                    <input type="text" id="input-url" placeholder="e.g. news-daily-buzz.com" value="research-frontier.org" oninput="updateSim()">
                 </div>
-                
-                <div class="layer fade-in-up">
-                    <span class="layer-icon">🛠️</span>
-                    <h3>Layer 3: Tools</h3>
-                    <p class="layer-subtitle">Intelligence Tools</p>
-                    <p>Specialized tools for every development need</p>
-                    <ul>
-                        <li>Security & Compliance</li>
-                        <li>Testing & Quality</li>
-                        <li>Analysis & Verification</li>
-                        <li>Content & Documentation</li>
-                    </ul>
+
+                <div class="input-group">
+                    <label class="input-label">Content Type</label>
+                    <select id="input-type" onchange="updateSim()">
+                        <option value="academic">Academic / Research Paper</option>
+                        <option value="news_major">Major News Outlet</option>
+                        <option value="blog" selected>Independent Blog / Medium</option>
+                        <option value="social">Social Media Post</option>
+                        <option value="forum">Forum / Reddit Thread</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">Claim Type</label>
+                    <select id="input-claim" onchange="updateSim()">
+                        <option value="fact">Statistical Fact</option>
+                        <option value="opinion">Opinion / Editorial</option>
+                        <option value="prediction">Future Prediction</option>
+                        <option value="technical">Technical Tutorial</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-title"><i class="fas fa-tasks"></i> Verification Steps</div>
+                <div class="step-list">
+                    <div class="step-item" onclick="toggleStep(this, 'author')">
+                        <div style="display:flex; align-items:center;">
+                            <div class="step-icon"><i class="fas fa-user-check"></i></div>
+                            <div class="step-info">
+                                <h4>Author Identity</h4>
+                                <p>Verify credentials & history</p>
+                            </div>
+                        </div>
+                        <i class="far fa-circle status-icon"></i>
+                    </div>
+
+                    <div class="step-item" onclick="toggleStep(this, 'crossref')">
+                        <div style="display:flex; align-items:center;">
+                            <div class="step-icon"><i class="fas fa-exchange-alt"></i></div>
+                            <div class="step-info">
+                                <h4>Cross-Reference</h4>
+                                <p>Check against trusted DBs</p>
+                            </div>
+                        </div>
+                        <i class="far fa-circle status-icon"></i>
+                    </div>
+
+                    <div class="step-item" onclick="toggleStep(this, 'bias')">
+                        <div style="display:flex; align-items:center;">
+                            <div class="step-icon"><i class="fas fa-balance-scale"></i></div>
+                            <div class="step-info">
+                                <h4>Sentiment Scan</h4>
+                                <p>Detect emotional loading</p>
+                            </div>
+                        </div>
+                        <i class="far fa-circle status-icon"></i>
+                    </div>
+
+                    <div class="step-item" onclick="toggleStep(this, 'domain')">
+                        <div style="display:flex; align-items:center;">
+                            <div class="step-icon"><i class="fas fa-globe"></i></div>
+                            <div class="step-info">
+                                <h4>Domain Audit</h4>
+                                <p>Age, WHOIS, SSL check</p>
+                            </div>
+                        </div>
+                        <i class="far fa-circle status-icon"></i>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Tools Section -->
-    <section id="tools" class="tools">
-        <div class="container">
-            <h2 class="section-title">Intelligence Tools</h2>
-            <p class="section-subtitle">
-                8 specialized tools that solve real developer problems
-            </p>
+        <div class="main-content">
             
-            <div class="tools-grid">
-                <!-- Security & Compliance -->
-                <div class="tool-card fade-in-up">
-                    <div class="tool-header">
-                        <span class="tool-icon">🔐</span>
-                        <div>
-                            <h3>Whisper</h3>
-                            <p class="tool-category">Security & Compliance</p>
-                        </div>
-                    </div>
-                    <p class="tool-description">
-                        Advanced secret and vulnerability scanner that prevents leaks before they happen
-                    </p>
-                    <ul class="tool-features">
-                        <li>Secret pattern detection</li>
-                        <li>CVE vulnerability scanning</li>
-                        <li>Risk scoring and prioritization</li>
-                        <li>Real-time monitoring</li>
-                    </ul>
-                    <a href="tools/whisper/README.md" class="tool-link">Learn more</a>
+            <div class="panel">
+                <div class="panel-title">
+                    <i class="fas fa-chart-pie"></i> Credibility Assessment
+                    <span style="margin-left: auto; font-size: 0.8rem; font-weight: 400; color: var(--text-muted);" id="analysis-time">Analysis time: 0.4s</span>
                 </div>
 
-                <div class="tool-card fade-in-up">
-                    <div class="tool-header">
-                        <span class="tool-icon">🛡️</span>
-                        <div>
-                            <h3>Aegis CLI</h3>
-                            <p class="tool-category">Security & Compliance</p>
+                <div style="display: flex; gap: 30px; align-items: center; justify-content: center; flex-wrap: wrap;">
+                    <div>
+                        <div class="score-circle" id="score-ring">
+                            <span class="score-val" id="main-score">0.0</span>
+                            <span class="score-label">Trust Score</span>
                         </div>
+                        <div class="score-verdict" id="verdict-text">Unknown</div>
                     </div>
-                    <p class="tool-description">
-                        Automated security compliance framework for SOC2, ISO27001, GDPR, and more
-                    </p>
-                    <ul class="tool-features">
-                        <li>Compliance documentation</li>
-                        <li>Policy template generation</li>
-                        <li>Executive reporting</li>
-                        <li>Continuous monitoring</li>
-                    </ul>
-                    <a href="tools/aegis-cli/README.md" class="tool-link">Learn more</a>
+
+                    <div style="flex: 1; min-width: 300px;">
+                        <div id="chart-container" style="height: 250px;"></div>
+                    </div>
                 </div>
 
-                <!-- Testing & Quality -->
-                <div class="tool-card fade-in-up">
-                    <div class="tool-header">
-                        <span class="tool-icon">🧪</span>
-                        <div>
-                            <h3>Test Generator</h3>
-                            <p class="tool-category">Testing & Quality</p>
-                        </div>
+                <div class="metrics-grid">
+                    <div class="metric-box">
+                        <div class="metric-val" id="metric-bias">--</div>
+                        <div class="metric-lbl">Bias Rating</div>
                     </div>
-                    <p class="tool-description">
-                        AI-powered automated test creation with multi-language support and intelligent coverage
-                    </p>
-                    <ul class="tool-features">
-                        <li>Multi-language support</li>
-                        <li>Intelligent test generation</li>
-                        <li>Coverage analysis</li>
-                        <li>Framework integration</li>
-                    </ul>
-                    <a href="tools/test-generator/README.md" class="tool-link">Learn more</a>
-                </div>
-
-                <div class="tool-card fade-in-up">
-                    <div class="tool-header">
-                        <span class="tool-icon">🪪</span>
-                        <div>
-                            <h3>EmbedID</h3>
-                            <p class="tool-category">Testing & Quality</p>
-                        </div>
+                    <div class="metric-box">
+                        <div class="metric-val" id="metric-sources">0</div>
+                        <div class="metric-lbl">Corroborating Sources</div>
                     </div>
-                    <p class="tool-description">
-                        Code watermarking and provenance tracking for integrity verification and lineage
-                    </p>
-                    <ul class="tool-features">
-                        <li>Invisible watermarking</li>
-                        <li>Change lineage tracking</li>
-                        <li>Integrity verification</li>
-                        <li>Contribution analytics</li>
-                    </ul>
-                    <a href="tools/embedid/README.md" class="tool-link">Learn more</a>
-                </div>
-
-                <!-- Analysis & Verification -->
-                <div class="tool-card fade-in-up">
-                    <div class="tool-header">
-                        <span class="tool-icon">🎯</span>
-                        <div>
-                            <h3>CertiScope</h3>
-                            <p class="tool-category">Analysis & Verification</p>
-                        </div>
+                    <div class="metric-box">
+                        <div class="metric-val" id="metric-risk">--</div>
+                        <div class="metric-lbl">Risk Pattern</div>
                     </div>
-                    <p class="tool-description">
-                        Intelligent web analysis with certainty scoring and multi-source verification for reliable research
-                    </p>
-                    <ul class="tool-features">
-                        <li>Credibility scoring (0-10 scale)</li>
-                        <li>Multi-source verification</li>
-                        <li>Intent recognition & analysis</li>
-                        <li>Fact validation & quality assessment</li>
-                    </ul>
-                    <a href="tools/certiscope/README.md" class="tool-link">Learn more</a>
-                </div>
-
-                <div class="tool-card fade-in-up">
-                    <div class="tool-header">
-                        <span class="tool-icon">🌳</span>
-                        <div>
-                            <h3>TreeCraft</h3>
-                            <p class="tool-category">Analysis & Verification</p>
-                        </div>
-                    </div>
-                    <p class="tool-description">
-                        Project structure analysis with best practice recommendations and automated fixes
-                    </p>
-                    <ul class="tool-features">
-                        <li>Structure visualization</li>
-                        <li>Best practice recommendations</li>
-                        <li>Automated restructuring</li>
-                        <li>Framework-specific guidance</li>
-                    </ul>
-                    <a href="tools/treecraft/README.md" class="tool-link">Learn more</a>
-                </div>
-
-                <!-- Content & AI -->
-                <div class="tool-card fade-in-up">
-                    <div class="tool-header">
-                        <span class="tool-icon">✍️</span>
-                        <div>
-                            <h3>MarkFlow</h3>
-                            <p class="tool-category">Content & Documentation</p>
-                        </div>
-                    </div>
-                    <p class="tool-description">
-                        Intelligent markdown editor with AI-powered writing assistance and real-time collaboration
-                    </p>
-                    <ul class="tool-features">
-                        <li>AI writing assistance</li>
-                        <li>Real-time collaboration</li>
-                        <li>Smart content suggestions</li>
-                        <li>Advanced formatting</li>
-                    </ul>
-                    <a href="tools/markflow/README.md" class="tool-link">Learn more</a>
-                </div>
-
-                <div class="tool-card fade-in-up">
-                    <div class="tool-header">
-                        <span class="tool-icon">🦎</span>
-                        <div>
-                            <h3>Chameleon LM</h3>
-                            <p class="tool-category">AI Enhancement</p>
-                        </div>
-                    </div>
-                    <p class="tool-description">
-                        Domain expertise adapter that transforms AI models into specialized domain experts
-                    </p>
-                    <ul class="tool-features">
-                        <li>Dynamic personality adaptation</li>
-                        <li>Domain knowledge injection</li>
-                        <li>Context-aware responses</li>
-                        <li>Multi-domain expertise</li>
-                    </ul>
-                    <a href="tools/chameleon/README.md" class="tool-link">Learn more</a>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Problem Section -->
-    <section class="problem">
-        <div class="container">
-            <h2 class="section-title">The Problem We Solve</h2>
-            <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 40px; border-radius: 15px; margin: 40px 0; border: 1px solid var(--border-color);">
-                <p style="font-size: 1.3em; margin-bottom: 25px; color: var(--text-dark);"><strong>Every development team wastes time and money on:</strong></p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 30px 0;">
-                    <div style="display: flex; align-items: flex-start; gap: 15px;">
-                        <span style="font-size: 1.5em;">💸</span>
-                        <div>
-                            <strong>Expensive AI API bills</strong><br>
-                            <span style="color: var(--text-muted);">$5K-$50K/month for enterprise teams</span>
-                        </div>
+            <div class="panel">
+                <div class="panel-title"><i class="fas fa-flag"></i> Key Findings</div>
+                <div id="findings-list" class="flag-list">
                     </div>
-                    <div style="display: flex; align-items: flex-start; gap: 15px;">
-                        <span style="font-size: 1.5em;">🔑</span>
-                        <div>
-                            <strong>Secret leaks to GitHub</strong><br>
-                            <span style="color: var(--text-muted);">Happens weekly, costs millions</span>
-                        </div>
-                    </div>
-                    <div style="display: flex; align-items: flex-start; gap: 15px;">
-                        <span style="font-size: 1.5em;">📝</span>
-                        <div>
-                            <strong>Security docs nobody writes</strong><br>
-                            <span style="color: var(--text-muted);">Until after the breach</span>
-                        </div>
-                    </div>
-                    <div style="display: flex; align-items: flex-start; gap: 15px;">
-                        <span style="font-size: 1.5em;">🧪</span>
-                        <div>
-                            <strong>Manual test writing</strong><br>
-                            <span style="color: var(--text-muted);">Boring, skipped, causes bugs</span>
-                        </div>
-                    </div>
-                    <div style="display: flex; align-items: flex-start; gap: 15px;">
-                        <span style="font-size: 1.5em;">❓</span>
-                        <div>
-                            <strong>Unreliable web sources</strong><br>
-                            <span style="color: var(--text-muted);">Can't trust what you find online</span>
-                        </div>
-                    </div>
-                    <div style="display: flex; align-items: flex-start; gap: 15px;">
-                        <span style="font-size: 1.5em;">🔄</span>
-                        <div>
-                            <strong>Repetitive manual workflows</strong><br>
-                            <span style="color: var(--text-muted);">Same tasks, every project</span>
-                        </div>
-                    </div>
-                </div>
-                <p style="font-size: 1.4em; margin-top: 30px; padding: 20px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; border-radius: 10px; text-align: center; font-weight: 600;">
-                    <strong>We automate all of it. On-premise. Open source. 70% cost reduction.</strong>
-                </p>
             </div>
+
         </div>
-    </section>
-                   
+    </div>
+</div>
+
+<script>
+    // CONFIG & STATE
+    const BASE_SCORES = {
+        'academic': 8.5,
+        'news_major': 7.5,
+        'blog': 5.0,
+        'social': 2.5,
+        'forum': 3.0
+    };
+
+    const CLAIM_MODIFIERS = {
+        'fact': 1.0,        // Easier to verify
+        'opinion': 0.8,     // Subjective
+        'prediction': 0.6,  // Inherently uncertain
+        'technical': 0.9    // Verifiable via code/math
+    };
+
+    const STEP_IMPACTS = {
+        'author': 1.5,
+        'crossref': 2.0,
+        'bias': 1.0,
+        'domain': 1.0
+    };
+
+    let activeSteps = new Set();
+
+    // LOGIC
+    function toggleStep(el, stepId) {
+        if(activeSteps.has(stepId)) {
+            activeSteps.delete(stepId);
+            el.classList.remove('active');
+            el.querySelector('.status-icon').className = 'far fa-circle status-icon';
+        } else {
+            activeSteps.add(stepId);
+            el.classList.add('active');
+            el.querySelector('.status-icon').className = 'fas fa-check-circle status-icon';
+        }
+        updateSim();
+    }
+
+    function updateSim() {
+        // 1. Gather Inputs
+        const type = document.getElementById('input-type').value;
+        const claim = document.getElementById('input-claim').value;
+        const url = document.getElementById('input-url').value;
+
+        // 2. Base Calculation
+        let score = BASE_SCORES[type] * CLAIM_MODIFIERS[claim];
+
+        // 3. Apply Steps (Verification boosts confidence)
+        activeSteps.forEach(step => {
+            // Diminishing returns: Simulation of finding verifying info
+            // If base score is low, steps help a lot. If high, they confirm.
+            score += STEP_IMPACTS[step];
+        });
+
+        // Cap Score
+        score = Math.min(10, Math.max(0, score));
+
+        // 4. Update UI - Score
+        const scoreEl = document.getElementById('main-score');
+        const ringEl = document.getElementById('score-ring');
+        const verdictEl = document.getElementById('verdict-text');
+
+        scoreEl.innerText = score.toFixed(1);
+        
+        // Color Logic
+        let color = '#64748b';
+        let verdict = "Inconclusive";
+        
+        if (score >= 8.0) { color = '#0d9488'; verdict = "High Credibility"; } // Teal
+        else if (score >= 5.0) { color = '#d97706'; verdict = "Review Needed"; } // Amber
+        else { color = '#e11d48'; verdict = "Low Reliability"; } // Red
+
+        ringEl.style.borderColor = color;
+        verdictEl.style.color = color;
+        verdictEl.style.backgroundColor = color + '15'; // 15 = low opacity hex
+        verdictEl.innerText = verdict;
+
+        // 5. Update Metrics
+        // Simulating data based on inputs
+        let bias = "Neutral";
+        if(type === 'blog' || type === 'social') bias = "Leaning";
+        if(activeSteps.has('bias')) bias = "Analyzed: Moderate";
+
+        let sources = 0;
+        if(activeSteps.has('crossref')) sources = Math.floor(score * 1.5); // Simulating matches
+
+        document.getElementById('metric-bias').innerText = bias;
+        document.getElementById('metric-sources').innerText = sources;
+        document.getElementById('metric-risk').innerText = (10 - score) > 5 ? "High" : "Low";
+
+        // 6. Update Findings List
+        updateFindings(score, type, activeSteps);
+
+        // 7. Update Chart
+        updateChart(score);
+    }
+
+    function updateFindings(score, type, steps) {
+        const list = document.getElementById('findings-list');
+        list.innerHTML = ''; // Clear
+
+        const addFlag = (msg, type) => {
+            list.innerHTML += `<div class="flag-item ${type}"><i class="fas fa-info-circle"></i> ${msg}</div>`;
+        };
+
+        // Heuristic Logic for Demo
+        if (score < 4) {
+            addFlag("Source domain authority is below threshold.", "danger");
+            addFlag("Language patterns indicate high emotional loading.", "danger");
+        }
+        if (type === 'social' || type === 'forum') {
+            addFlag("User-generated content requires independent verification.", "warn");
+        }
+        if (steps.has('crossref') && score > 7) {
+            addFlag("Cross-referenced with 3 major knowledge bases.", "safe");
+        }
+        if (steps.has('domain') && score > 6) {
+            addFlag("Domain is >5 years old with valid SSL.", "safe");
+        }
+        if (steps.size === 0) {
+            addFlag("Pending verification steps. Analysis incomplete.", "warn");
+        }
+    }
+
+    function updateChart(finalScore) {
+        // Visualize "Confidence Building" over time (simulated)
+        const steps = ['Init', 'Meta', 'Content', 'Network', 'Final'];
+        
+        // Generate a curve that ends at finalScore
+        let yValues = [BASE_SCORES[document.getElementById('input-type').value] * 0.8]; // Start lower
+        
+        for(let i=1; i<4; i++) {
+            // Random walk towards final score
+            let prev = yValues[i-1];
+            let gap = finalScore - prev;
+            yValues.push(prev + (gap * 0.6));
+        }
+        yValues.push(finalScore);
+
+        const trace = {
+            x: steps,
+            y: yValues,
+            mode: 'lines+markers',
+            line: { color: '#4338ca', width: 3, shape: 'spline' },
+            fill: 'tozeroy',
+            fillcolor: 'rgba(67, 56, 202, 0.1)'
+        };
+
+        const layout = {
+            margin: {t:10, r:10, l:30, b:20},
+            yaxis: { range: [0, 10.5], title: 'Confidence' },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            font: { size: 10, color: '#64748b' },
+            displayModeBar: false
+        };
+
+        Plotly.newPlot('chart-container', [trace], layout, {displayModeBar: false, responsive: true});
+    }
+
+    // Init
+    updateSim();
+
+</script>
+
+</body> </html>
